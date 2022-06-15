@@ -25,6 +25,7 @@ file_handler = open('./followers.txt', 'a')
 while True:
     response = requests.get(follower_url + str(page))
     follower_lists = json.loads(response.text)
+    print(follower_list)
     follower_lists_len = len(follower_lists)
     if follower_lists_len == 0:
         break
@@ -32,6 +33,7 @@ while True:
     for follower_info in follower_lists:
         headers = { 'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36' }
         user = follower_info['login']
+        ptint(user)
         if user in follower_txt_lists:
             continue
         response = requests.put(update_followed_user % (user), auth=HTTPBasicAuth(github_user, personal_github_token), headers=headers)
