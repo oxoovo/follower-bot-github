@@ -25,7 +25,7 @@ file_handler = open('./followers.txt', 'a')
 while True:
     response = requests.get(follower_url + str(page))
     follower_lists = json.loads(response.text)
-    print(follower_list)
+    print(follower_lists)
     follower_lists_len = len(follower_lists)
     if follower_lists_len == 0:
         break
